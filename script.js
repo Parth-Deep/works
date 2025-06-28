@@ -46,4 +46,13 @@ materials.forEach( function(e){
    page2.style.backgroundImage=`url(${bgimg})`
  })   
 })
+// Hamburger menu toggle for mobile nav
+const hamburger = document.getElementById('hamburger');
+const navItem = document.getElementById('nav-item');
+if (hamburger && navItem) {
+  hamburger.addEventListener('click', () => {
+    navItem.classList.toggle('active');
+    hamburger.classList.toggle('active'); // Animate hamburger icon
+  });
+}
 

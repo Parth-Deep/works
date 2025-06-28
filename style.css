@@ -8,6 +8,8 @@ html,
 body {
     height: 100%;
     width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #nav {
@@ -24,6 +26,7 @@ body {
 
 #main {
     background-color: black;
+    overflow-x: hidden;
 }
 
 #logo svg {
@@ -105,6 +108,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-x: hidden;
 }
 
 #page1 h1 {
@@ -130,6 +134,7 @@ body {
     text-align: center;
     background-size: cover;
     background-position: center;
+    overflow-x: hidden;
 
 
     .material {
@@ -225,6 +230,7 @@ body {
     min-height: 100vh;
     width: 100%;
     background-color: white;
+    overflow-x: hidden;
 }
 
 .image-container {
@@ -286,47 +292,53 @@ body {
 .image-div:hover img {
     scale: 1.1;
 }
-.footer{
+.footer {
     min-height: 50vh;
     width: 100%;
     background-color: #F5E41B;
     position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px 80px;
+    flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
-.left{
+.footer .left, .footer .right {
+    position: static;
+    padding: 0;
+    margin: 0;
     font-size: 20px;
-    margin-top: 20px;
-    padding: 40px;
-    position: absolute;
 }
-.left ul li {
-    list-style: none;
-    line-height: 40px;
-    cursor: pointer;
-}
-.left ul li:hover{
-    scale:1.2;
-    color: beige;
-}
-.right {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
+
+@media (max-width: 768px) {
+  .footer {
     flex-direction: column;
-    align-items: flex-end;
-    padding: 40px;
-    font-size: 20px;
-   
+    align-items: center;
+    padding: 20px 10px;
+    min-height: 30vh;
+  }
+  .footer .left, .footer .right {
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
 }
-.right h2{
-    margin-right: 80px;
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 10px 2vw;
+    min-height: 20vh;
+  }
+  .footer .left, .footer .right {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
 }
-.contact{
-    margin: 8px;
-    border: 40%;
-}
+
 input {
     padding: 10px 16px;
     border: 2px solid #F5E41B;
@@ -359,5 +371,152 @@ input:focus {
     background-color: #222;
     color: #F5E41B;
     box-shadow: 0 4px 16px #22222233;
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  z-index: 101;
+  background: #fffbe6;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px #f5e41b55;
+  transition: background 0.3s, box-shadow 0.3s;
+  border: 2px solid #F5E41B;
+}
+.hamburger:hover {
+  background: #F5E41B;
+  box-shadow: 0 4px 16px #f5e41b99;
+}
+.hamburger span {
+  height: 4px;
+  width: 26px;
+  background: #222;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.4s;
+  display: block;
+}
+.hamburger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+  }
+  #nav-item {
+    display: none;
+    flex-direction: column;
+    background: #efedd5;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 180px;
+    box-shadow: 0 2px 12px #0002;
+    border-radius: 0 0 8px 8px;
+    padding: 16px 0;
+    z-index: 100;
+  }
+  #nav-item a{
+    margin-left: 60px;
+  }
+  #nav-item.active {
+    display: flex;
+  }
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 768px) {
+  html, body {
+    font-size: 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  #nav {
+    padding: 16px 10px;
+  }
+  #nav-item {
+    margin-left: 0;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  #page1 h1, #loader h1 {
+    font-size: 8vw;
+  }
+  #page2 {
+    padding: 10px;
+  }
+  .material h2 {
+    font-size: 12vw;
+    line-height: 13vw;
+  }
+  .material .blur {
+    width: 80%;
+  }
+  .image-container {
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .image-div {
+    width: 90vw;
+    height: 50vw;
+    margin: 10px 0;
+  }
+  .overlay p {
+    font-size: 5vw;
+    line-height: 5vw;
+  }
+  .footer {
+    min-height: 30vh;
+    padding: 10px;
+  }
+  .left, .right {
+    position: static;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+    align-items: flex-start;
+  }
+  .right h2 {
+    margin-right: 0;
+  }
+  input, #button {
+    width: 100%;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 480px) {
+  html, body {
+    font-size: 13px;
+  }
+  #page1 h1, #loader h1 {
+    font-size: 10vw;
+  }
+  .material h2 {
+    font-size: 15vw;
+    line-height: 16vw;
+  }
+  .image-div {
+    width: 98vw;
+    height: 60vw;
+  }
 }
 
